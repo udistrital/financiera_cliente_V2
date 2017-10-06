@@ -9,6 +9,7 @@
     'ui.router',
 
     'BlurAdmin.pages.dashboard',
+    'BlurAdmin.pages.descuentosImpuestos',
     'BlurAdmin.pages.ui',
     'BlurAdmin.pages.components',
     'BlurAdmin.pages.form',
