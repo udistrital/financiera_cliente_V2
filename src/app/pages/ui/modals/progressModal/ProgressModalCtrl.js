@@ -2,10 +2,10 @@
  * Created by n.poltoratsky
  * on 24.06.2016.
  */
-(function () {
+(function() {
     'use strict';
 
-    angular.module('BlurAdmin.pages.ui.modals')
+    angular.module('Kronos.pages.ui.modals')
         .controller('ProgressModalCtrl', ProgressModalCtrl);
 
     function ProgressModalCtrl($timeout, baProgressModal) {

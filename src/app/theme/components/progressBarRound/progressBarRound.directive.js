@@ -2,10 +2,10 @@
  * Created by n.poltoratsky
  * on 28.06.2016.
  */
-(function () {
+(function() {
     'use strict';
 
-    angular.module('BlurAdmin.theme.components')
+    angular.module('Kronos.theme.components')
         .directive('progressBarRound', progressBarRound);
 
     /** @ngInject */
@@ -13,9 +13,9 @@
         return {
             restrict: 'E',
             templateUrl: 'app/theme/components/progressBarRound/progressBarRound.html',
-            link:function($scope, element, attrs) {
+            link: function($scope, element, attrs) {
                 $scope.baProgressDialog = baProgressModal;
-                $scope.$watch(function () {
+                $scope.$watch(function() {
                     return baProgressModal.getProgress();
                 }, animateBar);
 

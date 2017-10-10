@@ -2,26 +2,26 @@
  * @author v.lugovsky
  * created on 16.12.2015
  */
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  angular.module('BlurAdmin.pages.components.mail')
-      .controller('MailTabCtrl', MailTabCtrl);
+    angular.module('Kronos.pages.components.mail')
+        .controller('MailTabCtrl', MailTabCtrl);
 
-  /** @ngInject */
-  function MailTabCtrl(composeModal, mailMessages) {
+    /** @ngInject */
+    function MailTabCtrl(composeModal, mailMessages) {
 
-    var vm = this;
-    vm.navigationCollapsed = true;
-    vm.showCompose = function(subject, to , text){
-      composeModal.open({
-        subject : subject,
-        to: to,
-        text: text
-      })
-    };
+        var vm = this;
+        vm.navigationCollapsed = true;
+        vm.showCompose = function(subject, to, text) {
+            composeModal.open({
+                subject: subject,
+                to: to,
+                text: text
+            })
+        };
 
-    vm.tabs = mailMessages.getTabs();
-  }
+        vm.tabs = mailMessages.getTabs();
+    }
 
 })();

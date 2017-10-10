@@ -38,7 +38,7 @@ req.onreadystatechange = function(e) {
     }
 };
 
-angular.module('financieraClienteApp')
+angular.module('Kronos')
     .factory('token_service', function($location, $http, $localStorage) {
         var service = {
             local: $localStorage.$default(params),

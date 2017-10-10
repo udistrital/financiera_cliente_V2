@@ -2,10 +2,10 @@
  * @author n.poltoratsky
  * created on 27.06.2016
  */
-(function () {
+(function() {
     'use strict';
 
-    angular.module('BlurAdmin.theme')
+    angular.module('Kronos.theme')
         .factory('baProgressModal', baProgressModal);
 
     /** @ngInject */
@@ -16,13 +16,13 @@
         var opened = false;
 
         return {
-            setProgress: function (value) {
+            setProgress: function(value) {
                 if (value > max) {
                     throw Error('Progress can\'t be greater than max');
                 }
                 progress = value;
             },
-            getProgress: function () {
+            getProgress: function() {
                 return progress;
             },
             open: function() {
