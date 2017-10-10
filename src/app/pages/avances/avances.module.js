@@ -5,7 +5,7 @@
             'Kronos.pages.avances.listaSolicitud',
             'Kronos.pages.avances.requisitos',
             'Kronos.pages.avances.solicitud',
-            'Kronos.pages.avances.tipo'
+            'Kronos.pages.avances.tipos'
         ])
         .config(routeConfig);
 

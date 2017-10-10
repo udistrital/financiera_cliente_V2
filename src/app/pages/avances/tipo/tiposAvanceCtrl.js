@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name financieraClienteApp.controller:TiposAvanceCtrl
+ * @name Kronos.pages.avances.tipos.controller:TiposAvanceCtrl
  * @description
  * # TiposAvanceCtrl
- * Controller of the financieraClienteApp
+ * Controller of the Kronos.pages.avances.tipos
  */
-angular.module('Kronos.pages.avances.tipo')
+angular.module('Kronos.pages.avances.tipos')
     .controller('TiposAvanceCtrl', function($scope, financieraRequest, $translate) {
         var ctrl = this;
         ctrl.requisitos_tipo = {};
@@ -120,6 +120,7 @@ angular.module('Kronos.pages.avances.tipo')
                     order: "asc"
                 }))
                 .then(function(response) {
+                    console.log(response.data);
                     ctrl.gridOptions.data = response.data;
                 });
         };

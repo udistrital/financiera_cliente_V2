@@ -1,8 +1,7 @@
 (function() {
     'use strict';
 
-    angular.module('Kronos.pages.avances.tipo', [
-            'financieraService.service',
+    angular.module('Kronos.pages.avances.tipos', [
             'ui.grid',
             'ui.grid.edit',
             'ui.grid.rowEdit',
@@ -21,10 +20,10 @@
     /** @ngInject */
     function routeConfig($stateProvider) {
         $stateProvider
-            .state('avances.tipo', {
+            .state('avances.tipos', {
                 url: '/tipo_avance',
                 templateUrl: 'app/pages/avances/tipo/tipos-avance.html',
-                title: 'ver',
+                title: 'Tipos Avance',
                 sidebarMeta: {
                     order: 300,
                 }
