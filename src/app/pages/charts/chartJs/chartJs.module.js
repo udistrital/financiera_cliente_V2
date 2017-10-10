@@ -2,10 +2,10 @@
  * @author a.demeshko
  * created on 12/16/15
  */
-(function () {
+(function() {
     'use strict';
 
-    angular.module('BlurAdmin.pages.charts.chartJs', [])
+    angular.module('Kronos.pages.charts.chartJs', [])
         .config(routeConfig).config(chartJsConfig);
 
     /** @ngInject */
@@ -26,7 +26,8 @@
         // Configure all charts
         ChartJsProvider.setOptions({
             chartColors: [
-                layoutColors.primary, layoutColors.danger, layoutColors.warning, layoutColors.success, layoutColors.info, layoutColors.default, layoutColors.primaryDark, layoutColors.successDark, layoutColors.warningLight, layoutColors.successLight, layoutColors.primaryLight],
+                layoutColors.primary, layoutColors.danger, layoutColors.warning, layoutColors.success, layoutColors.info, layoutColors.default, layoutColors.primaryDark, layoutColors.successDark, layoutColors.warningLight, layoutColors.successLight, layoutColors.primaryLight
+            ],
             responsive: true,
             maintainAspectRatio: false,
             animation: {

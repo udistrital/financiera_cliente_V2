@@ -8,7 +8,7 @@
  * 
  * Service module of the application.
  */
-angular.module('academicaService', [])
+angular.module('academicaService.service', [])
     /**
      * @ngdoc service
      * @name academicaService.service:academicaRequest

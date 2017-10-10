@@ -1,18 +1,20 @@
 'use strict';
 
-angular.module('BlurAdmin', [
-  'ngAnimate',
-  'ui.bootstrap',
-  'ui.sortable',
-  'ui.router',
-  'ngTouch',
-  'toastr',
-  'smart-table',
-  "xeditable",
-  'ui.slimscroll',
-  'ngJsTree',
-  'angular-progress-button-styles',
-  'BlurAdmin.theme',
-  'BlurAdmin.pages'//,
-  //'financieraService.service'
+angular.module('Kronos', [
+    'ngAnimate',
+    'ui.bootstrap',
+    'ui.sortable',
+    'ui.router',
+    'ngTouch',
+    'toastr',
+    'smart-table',
+    "xeditable",
+    'ui.slimscroll',
+    'ngJsTree',
+    'angular-progress-button-styles',
+    'pascalprecht.translate',
+    'Kronos.theme',
+    'Kronos.pages',
+    'financieraService.service',
+    'academicaService.service'
 ]);

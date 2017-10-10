@@ -2,10 +2,10 @@
  * Created by n.poltoratsky
  * on 23.06.2016.
  */
-(function(){
+(function() {
     'use strict';
 
-    angular.module('BlurAdmin.pages.form')
+    angular.module('Kronos.pages.form')
         .controller('datepickerpopupCtrl', datepickerpopupCtrl);
 
     /** @ngInject */
