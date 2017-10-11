@@ -14,7 +14,7 @@ angular.module('Kronos.pages.avances')
                 sol: '=?',
                 tipos: '=?'
             },
-            templateUrl: 'pages/avances/directives/ver-solicitud.html',
+            templateUrl: 'app/pages/avances/directives/ver-solicitud.html',
 
             controller: function($scope) {
                 var ctrl = this;

@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('Kronos.pages.avances', [
+            'Kronos.pages.ui.modals',
             'Kronos.pages.avances.listaSolicitud',
             'Kronos.pages.avances.requisitos',
             'Kronos.pages.avances.solicitud',

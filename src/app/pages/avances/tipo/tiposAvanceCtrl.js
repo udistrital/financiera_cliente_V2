@@ -8,7 +8,7 @@
  * Controller of the Kronos.pages.avances.tipos
  */
 angular.module('Kronos.pages.avances.tipos')
-    .controller('TiposAvanceCtrl', function($scope, financieraRequest, $translate) {
+    .controller('TiposAvanceCtrl', function($uibModal, $scope, financieraRequest, $translate) {
         var ctrl = this;
         ctrl.requisitos_tipo = {};
         ctrl.operacion = "";
@@ -209,7 +209,7 @@ angular.module('Kronos.pages.avances.tipos')
                     ctrl.row_entity = row.entity;
                     console.log(ctrl.row_entity);
                     ctrl.get_requisito_tipo_avance(ctrl.row_entity.Id);
-                    $('#modalVer').modal('show');
+                    $uibModal.open('#modalVer');
                     break;
                 case "add":
                     ctrl.tipo_avance.CodigoAbreviacion = "";

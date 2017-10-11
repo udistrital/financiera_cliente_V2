@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('Kronos', [
+        'ngMaterial',
         'ngAnimate',
         'ui.bootstrap',
         'ui.sortable',
@@ -13,6 +14,7 @@ angular.module('Kronos', [
         'ngJsTree',
         'angular-progress-button-styles',
         'pascalprecht.translate',
+        'ui.utils.masks',
         'Kronos.theme',
         'Kronos.pages',
         'financieraService.service',
