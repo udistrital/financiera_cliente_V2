@@ -24,7 +24,7 @@
             .state('avances.requisitos', {
                 url: '/requisito_avance',
                 templateUrl: 'app/pages/avances/requisito/requisitos.html',
-                title: 'ver',
+                title: 'Requisitos',
                 sidebarMeta: {
                     order: 300,
                 }

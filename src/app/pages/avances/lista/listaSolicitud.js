@@ -24,7 +24,7 @@
             .state('avances.listaSolicitud', {
                 url: '/listaSolicitud',
                 templateUrl: 'app/pages/avances/lista/lista-solicitud.html',
-                title: 'Lista Solicitud Avance',
+                title: 'Lista Solicitud',
                 sidebarMeta: {
                     order: 300,
                 }

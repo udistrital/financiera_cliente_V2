@@ -31,7 +31,6 @@ As well you can use Kronos for learning purposes.
 * Jquery
 * Jquery ui
 * Charts (amChart, Chartist, Chart.js, Morris)
-* Maps (Google, Leaflet, amMap)
 * etc
 
 ## I want to start developing with Kronos

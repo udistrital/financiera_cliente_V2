@@ -15,7 +15,6 @@
             'Kronos.pages.form',
             'Kronos.pages.tables',
             'Kronos.pages.charts',
-            'Kronos.pages.maps',
             'Kronos.pages.profile',
         ])
         .config(routeConfig);

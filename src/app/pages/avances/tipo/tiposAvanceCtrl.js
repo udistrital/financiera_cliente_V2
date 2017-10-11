@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name financieraClienteApp.controller:TiposAvanceCtrl
+ * @name Kronos.pages.avances.tipos.controller:TiposAvanceCtrl
  * @description
  * # TiposAvanceCtrl
- * Controller of the financieraClienteApp
+ * Controller of the Kronos.pages.avances.tipos
  */
-angular.module('Kronos.pages.avances.tipo')
-    .controller('TiposAvanceCtrl', function($scope, financieraRequest, $translate) {
+angular.module('Kronos.pages.avances.tipos')
+    .controller('TiposAvanceCtrl', function($uibModal, $scope, financieraRequest, $translate) {
         var ctrl = this;
         ctrl.requisitos_tipo = {};
         ctrl.operacion = "";
@@ -120,6 +120,7 @@ angular.module('Kronos.pages.avances.tipo')
                     order: "asc"
                 }))
                 .then(function(response) {
+                    console.log(response.data);
                     ctrl.gridOptions.data = response.data;
                 });
         };
@@ -208,7 +209,7 @@ angular.module('Kronos.pages.avances.tipo')
                     ctrl.row_entity = row.entity;
                     console.log(ctrl.row_entity);
                     ctrl.get_requisito_tipo_avance(ctrl.row_entity.Id);
-                    $('#modalVer').modal('show');
+                    $uibModal.open('#modalVer');
                     break;
                 case "add":
                     ctrl.tipo_avance.CodigoAbreviacion = "";
