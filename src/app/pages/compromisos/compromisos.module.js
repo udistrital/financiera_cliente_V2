@@ -2,7 +2,8 @@
     'use strict';
     angular.module('Kronos.pages.compromisos', [
             'Kronos.pages.compromisos.listadoCompromisos',
-            'financieraService.service'          
+            'Kronos.pages.compromisos.crearCompromiso',
+            'financieraService.service'
         ])
         .config(routeConfig);
 
