@@ -1,0 +1,24 @@
+<section ng-controller="GestionCompromisosCtrl as gestionCompromisos" class="chartist">
+
+<div class="col-md-12">
+  <sel-categoria-tipo categoria="gestionCompromisos.filtro_categoria" ></sel-categoria-tipo>
+</div>
+<!--div class="col-md-2">
+  <fieldset class="form-group">
+    <br>
+    <button class="btn btn-info" ng-click="gestionCompromisos.filter()"><i class=" ion-search"></i> Buscar</button>
+  </fieldset>
+</div-->
+
+
+<div class="col-md-12" ng-show="gestionCompromisos.gridfield">
+  <div class="panel panel-default">
+    <div class="mi-grid" id="mi-grid" ui-grid="gestionCompromisos.gridOptions" ui-grid-selection ui-grid-pagination ui-grid-auto-resize></div>
+  </div>
+  <!--div class="col-md-12">
+      <center><a href="#/plan_cuentas/crear_descuento" type="button" class="btn btn-info" name="button">{{"AGREGAR" }}</a></center>
+  </div-->
+</div>
+
+
+</section>

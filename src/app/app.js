@@ -18,7 +18,8 @@ angular.module('Kronos', [
         'Kronos.theme',
         'Kronos.pages',
         'financieraService.service',
-        'academicaService.service'
+        'academicaService.service',
+        'Kronos.pages.compromisos'
     ])
     .config(['$locationProvider', function($locationProvider) {
         $locationProvider.hashPrefix("");
