@@ -18,7 +18,7 @@
             .state('compromisos.listadoCompromisos', {
                 url: '/ver',
                 templateUrl: 'app/pages/compromisos/listado/listado-compromisos.html',
-                title: 'Listado',
+                title: 'Lista Compromisos',
                 sidebarMeta: {
                     order: 100,
                 }
