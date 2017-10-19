@@ -13,12 +13,13 @@
               restrict: 'E',
               scope: {
                   categoria: '=?',
-                  tipo: '=?'
+                  tipo: '=?',
+                  reload: '=?'
               },
               templateUrl: 'app/pages/compromisos/directives/sel-categoria-tipo.html',
               controller: function($scope, $attrs) {
                 var self=this;
-                self.sel_tipo='tipo' in $attrs;                
+                self.sel_tipo='tipo' in $attrs;
                 self.cargar_categorias = function() {
                   financieraRequest.get("categoria_compromiso", $.param({
                     sortby: "Id",
@@ -28,11 +29,11 @@
                     self.categorias = response.data;
                   });
                 };
-                self.cargar_categorias();
-
+                $scope.$watch('reload',function(){
+                  self.cargar_categorias();
+                },true);
               },
               controllerAs: 'd_selCategoriaTipo'
           };
       });
-
 })();

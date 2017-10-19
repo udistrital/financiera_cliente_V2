@@ -2,7 +2,8 @@
     'use strict';
     angular.module('Kronos.pages.compromisos', [
             'Kronos.pages.compromisos.listadoCompromisos',
-            'financieraService.service'          
+            'Kronos.pages.compromisos.crearCompromiso',
+            'financieraService.service'
         ])
         .config(routeConfig);
 
@@ -15,7 +16,7 @@
                 template: '<div ui-view  autoscroll="true" autoscroll-body-top></div>',
                 title: 'Compromisos',
                 sidebarMeta: {
-                    icon: 'ion-stats-bars',
+                    icon: 'ion-flag',
                     order: 1000, //Posicion en el menu
                 },
             });

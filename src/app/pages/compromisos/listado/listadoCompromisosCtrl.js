@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('Kronos.pages.compromisos.listadoCompromisos')
-    .controller('GestionCompromisosCtrl', function($scope, financieraRequest) {
+    .controller('GestionCompromisosCtrl', function($scope, financieraRequest, $translate) {
       var self = this;
 
       //grid para mostrar los impuestos y descuentos existentes
@@ -18,54 +18,54 @@
         enableSelectAll: false,
         columnDefs: [{
             field: 'Vigencia',
-            displayName: ('Vigencia'),
+            displayName: $translate.instant('VIGENCIA'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
             width: '7%'
           },
           {
             field: 'Objeto',
-            displayName: ('Objeto'),
+            displayName: $translate.instant('OBJETO'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
             width: '50%'
           },
           {
             field: 'FechaInicio',
-            displayName: ('Inicio'),
+            displayName: $translate.instant('FECHA_INICIO'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
             width: '10%'
           },
           {
             field: 'FechaFin',
-            displayName: ('Fin'),
+            displayName: $translate.instant('FECHA_FIN'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
             width: '10%'
           },
           {
             field: 'EstadoCompromiso.Nombre',
-            displayName: ('Estado'),
+            displayName: $translate.instant('ESTADO'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
             width: '7%'
           },
           {
             field: 'TipoCompromisoTesoral.Nombre',
-            displayName: ('Tipo'),
+            displayName: $translate.instant('TIPO'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
             width: '8%'
           },
           {
             visible:false,
             field: 'TipoCompromisoTesoral.CategoriaCompromiso.Nombre',
-            displayName: ('Tipo'),
+            displayName: $translate.instant('CATEGORIA'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
             width: '8%'
           },
           {
-            name: ('OPCIONES'),
+            name: $translate.instant('OPCIONES'),
             enableFiltering: false,
             width: '8%',
             cellTemplate: '<center>' +
               '<a href="" class="editar" ng-click="grid.appScope.crearPlan.mod_editar(row.entity);grid.appScope.editar=true;" data-toggle="modal" data-target="#modalform">' +
-              '<i data-toggle="tooltip" title="{{\'BTN.EDITAR\' }}" class="fa fa-cog fa-lg" aria-hidden="true"></i></a> ' +
+              '<i data-toggle="tooltip" title="{{\'BTN.EDITAR\' | translate }}" class="fa fa-cog fa-lg" aria-hidden="true"></i></a> ' +
               '</center>'
           }
         ]
@@ -86,9 +86,9 @@
       self.cargar = function() {
         financieraRequest.get("compromiso", $.param({
           limit: -1,
-          query: "TipoCompromisoTesoral.CategoriaCompromiso.Nombre:"+self.filtro_categoria.Nombre
+          query: "TipoCompromisoTesoral.CategoriaCompromiso.Nombre:"+self.filtro_categoria.Nombre+",UnidadEjecutora:"+1 //CAMBIAR SEGUN USUARIO LOGUEADO
         })).then(function(response) {
-          self.gridOptions.data = response.data;
+          self.gridOptions.data =(response.data != null)?response.data:[];
         });
       };
 
@@ -100,8 +100,6 @@
           self.gridfield=false;
         }
       },true);
-
-
 
     });
 

@@ -1,24 +1,35 @@
 <section ng-controller="GestionCompromisosCtrl as gestionCompromisos" class="chartist">
 
-<div class="col-md-12">
-  <sel-categoria-tipo categoria="gestionCompromisos.filtro_categoria" ></sel-categoria-tipo>
-</div>
-<!--div class="col-md-2">
-  <fieldset class="form-group">
-    <br>
-    <button class="btn btn-info" ng-click="gestionCompromisos.filter()"><i class=" ion-search"></i> Buscar</button>
-  </fieldset>
-</div-->
-
-
-<div class="col-md-12" ng-show="gestionCompromisos.gridfield">
-  <div class="panel panel-default">
-    <div class="mi-grid" id="mi-grid" ui-grid="gestionCompromisos.gridOptions" ui-grid-selection ui-grid-pagination ui-grid-auto-resize></div>
+  <div class="col-md-12">
+    <sel-categoria-tipo categoria="gestionCompromisos.filtro_categoria"></sel-categoria-tipo>
   </div>
-  <!--div class="col-md-12">
-      <center><a href="#/plan_cuentas/crear_descuento" type="button" class="btn btn-info" name="button">{{"AGREGAR" }}</a></center>
-  </div-->
-</div>
+
+  <div class="col-md-12" ng-show="gestionCompromisos.gridfield">
+    <div class="panel panel-default">
+      <div class="mi-grid" id="mi-grid" ui-grid="gestionCompromisos.gridOptions" ui-grid-selection ui-grid-pagination ui-grid-auto-resize></div>
+    </div>
+  </div>
+
+  <div class="col-md-12" ng-if="gestionCompromisos.compromiso!=null && gestionCompromisos.gridfield">
+    <div class="panel panel-default">
+
+      <div class="panel-body">
+
+        <h4 class="text-info">{{gestionCompromisos.compromiso.EstadoCompromiso.Nombre}}
+          <span class="pull-right">{{gestionCompromisos.compromiso.TipoCompromisoTesoral.CategoriaCompromiso.Nombre}} | {{gestionCompromisos.compromiso.TipoCompromisoTesoral.Nombre}} </span></h4>
+
+        <blockquote class="blockquote">
+          <small>{{gestionCompromisos.compromiso.Objeto}}</small>
+        </blockquote>
+
+        <span class="label label-default">{{"FECHA_INICIO" | translate}} : {{gestionCompromisos.compromiso.FechaInicio | date: 'yyyy-MM-dd'}}</span>
+        <span class="label label-default">{{"FECHA_FIN" | translate}} : {{gestionCompromisos.compromiso.FechaFin | date: 'yyyy-MM-dd'}}</span>
+
+      </div>
+
+    </div>
+
+  </div>
 
 
 </section>
