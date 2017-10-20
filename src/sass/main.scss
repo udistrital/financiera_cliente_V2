@@ -11,9 +11,86 @@ span {
 }
 
 #pac .mi-grid-pac.ui-grid-cell {
-    float: none;
-    display: table-cell;
+    float: none !important;
+    display: table-cell !important;
 }
+
+/* UI-GRID*/
+
+[ui-grid-row] {
+  display: table-row;
+}
+
+.ui-grid-row, .ui-grid-cell {
+  height: auto!important;
+}
+
+.ui-grid-cell {
+  float: none;
+  display: table-cell;
+  vertical-align: middle !important;
+}
+
+.ui-grid-header-cell, .ui-grid-cell-contents {
+  white-space: normal;
+  padding: auto !important;
+  word-break: break-word;
+}
+
+.ui-grid, .ui-grid-viewport, .ui-grid-render-container-body, .ui-grid-canvas {
+  height: auto !important;
+}
+
+.ui-grid-pager-panel {
+  position: relative !important;
+  left: 0 !important;
+  bottom: 0px !important;
+  top: -12px;
+  padding-top: 16px !important;
+  padding-bottom: 16px;
+}
+
+.ui-grid-pager-container {
+    float: none !important;
+}
+
+.ui-grid-pager-control .ui-grid-pager-max-pages-number {
+    vertical-align: middle;
+}
+/*#simplegrid  [ui-grid-row] {
+  display: table-row !important;
+}
+
+#simplegrid  .ui-grid-row, .ui-grid-cell {
+  height: auto!important;
+}
+
+#simplegrid  .ui-grid-cell {
+  float: none !important;
+  display: table-cell !important;
+}
+
+#simplegrid  .ui-grid-header-cell, .ui-grid-cell-contents {
+  white-space: normal !important;
+  padding: auto !important;
+  word-break: break-word !important;
+}
+
+#simplegrid .ui-grid, .ui-grid-viewport, .ui-grid-render-container-body, .ui-grid-canvas {
+  height: auto !important;
+}
+
+#simplegrid .ui-grid-pager-panel {
+  position: sticky !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#simplegrid  .ui-grid-pager-container {
+  float: none !important;
+}*/
 
 
 /*clases para acomodar el grid al numero de filas contemplando sus tamaños.*/
@@ -371,11 +448,11 @@ legend:hover {
 /*Clases generales para pintar imputs que utilizan ng-model e indicar el error*/
 
 .ng-invalid.ng-dirty {
-    border-color: red;
+    border-color: #cc0909;
 }
 
 .ng-valid.ng-dirty {
-    border-color: green;
+    border-color: #2f8448;
 }
 
 
@@ -590,9 +667,9 @@ footer {
 
 /*end dropdown-menu */
 
-body {
+/*body {
     background-color: #FFFFFF;
-}
+}*/
 
 #wrapper {
     width: 100%;
@@ -852,6 +929,6 @@ table.dataTable thead .sorting:after {
 
 .panel-default>.panel-heading {
     color: white;
-    background-color: rgba(0, 62, 101, 1);
+    background-color: rgb(28, 43, 54);
     border-color: #ddd;
 }
