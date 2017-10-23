@@ -5,6 +5,42 @@
     .controller('GestionCompromisosCtrl', function($scope, financieraRequest, $translate) {
       var self = this;
 
+      $scope.botones = [
+          { clase_color: "eliminar", clase_css: "fa fa-times-circle fa-lg  faa-shake animated-hover", titulo: $translate.instant('BTN.CANCELAR'), operacion: 'eliminar', estado: true },
+          { clase_color: "editar", clase_css: "fa fa fa-cog fa-lg faa-shake animated-hover", titulo: $translate.instant('BTN.EDITAR'), operacion: 'editar', estado: true }
+      ];
+
+      $scope.loadrow = function(row, operacion) {
+          $scope.solicitud = row.entity;
+          switch (operacion) {
+              case "eliminar":
+                  swal({
+                    title: $translate.instant('CANCELAR_COMPROMISO')+'!',
+                    text: $translate.instant('DESEA_CANCELAR_COMPROMISO'),
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonClass: 'btn btn-success',
+                    cancelButtonClass: 'btn btn-danger',
+                    confirmButtonText: $translate.instant('BTN.CONFIRMAR'),
+                    cancelButtonText: $translate.instant('BTN.CANCELAR'),
+                    buttonsStyling: false
+                  }).then(function() {
+                    financieraRequest.delete('compromiso',row.entity.Id).then(function(response){
+                      console.log(response.data);
+                      swal("",$translate.instant(response.data.Code), response.data.Type);
+                      if (response.data.Type=='success') {
+                        self.cargar();
+                      }
+                    });
+                  });
+                  break;
+              case "editar":
+
+                  break;
+              default:
+          }
+      };
+
       //grid para mostrar los impuestos y descuentos existentes
       self.gridOptions = {
         paginationPageSizes: [5, 10, 15, 20, 50],
@@ -63,10 +99,7 @@
             name: $translate.instant('OPCIONES'),
             enableFiltering: false,
             width: '8%',
-            cellTemplate: '<center>' +
-              '<a href="" class="editar" ng-click="grid.appScope.crearPlan.mod_editar(row.entity);grid.appScope.editar=true;" data-toggle="modal" data-target="#modalform">' +
-              '<i data-toggle="tooltip" title="{{\'BTN.EDITAR\' | translate }}" class="fa fa-cog fa-lg" aria-hidden="true"></i></a> ' +
-              '</center>'
+            cellTemplate: '<center><btn-registro funcion="grid.appScope.loadrow(fila,operacion)" grupobotones="grid.appScope.botones" fila="row"></btn-registro></center>'
           }
         ]
       };

@@ -24,7 +24,7 @@
                   financieraRequest.get("categoria_compromiso", $.param({
                     sortby: "Id",
                     order: "asc",
-                    limit: 0
+                    limit: -1
                   })).then(function(response) {
                     self.categorias = response.data;
                   });

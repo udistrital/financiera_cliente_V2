@@ -16,7 +16,7 @@
         financieraRequest.get("estado_compromiso",$.param({
           sortby: "Id",
           order: "asc",
-          limit:0,
+          limit:1,
           query:"Nombre:Pendiente"
         })).then(function(response){
           self.nuevo_estado_compromiso=response.data[0];
