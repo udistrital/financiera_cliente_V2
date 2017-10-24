@@ -2,10 +2,11 @@
   'use strict';
 
   angular.module('Kronos.pages.compromisos.listadoCompromisos')
-    .controller('GestionCompromisosCtrl', function($scope, financieraRequest, $translate) {
+    .controller('GestionCompromisosCtrl', function($scope, financieraRequest, $translate, $location, $anchorScroll) {
       var self = this;
 
       $scope.botones = [
+          { clase_color: "ver", clase_css: "fa fa-eye fa-lg  faa-shake animated-hover", titulo: $translate.instant('BTN.VER'), operacion: 'ver', estado: true },
           { clase_color: "eliminar", clase_css: "fa fa-times-circle fa-lg  faa-shake animated-hover", titulo: $translate.instant('BTN.CANCELAR'), operacion: 'eliminar', estado: true },
           { clase_color: "editar", clase_css: "fa fa fa-cog fa-lg faa-shake animated-hover", titulo: $translate.instant('BTN.EDITAR'), operacion: 'editar', estado: true }
       ];
@@ -13,6 +14,11 @@
       $scope.loadrow = function(row, operacion) {
           $scope.solicitud = row.entity;
           switch (operacion) {
+              case "ver":
+              console.log(row);
+                self.compromiso = row.entity;
+                $('#modal_ver').modal('show');
+                break;
               case "eliminar":
                   swal({
                     title: $translate.instant('CANCELAR_COMPROMISO')+'!',
@@ -35,7 +41,9 @@
                   });
                   break;
               case "editar":
-
+                  self.edit_compromiso = angular.copy(row.entity);
+                  $location.hash('form_edit');
+                  $anchorScroll();
                   break;
               default:
           }
@@ -99,7 +107,7 @@
             name: $translate.instant('OPCIONES'),
             enableFiltering: false,
             width: '8%',
-            cellTemplate: '<center><btn-registro funcion="grid.appScope.loadrow(fila,operacion)" grupobotones="grid.appScope.botones" fila="row"></btn-registro></center>'
+            cellTemplate: '<center><btn-registro funcion="grid.appScope.loadrow(row,operacion)" grupobotones="grid.appScope.botones"></btn-registro></center>'
           }
         ]
       };
@@ -111,7 +119,7 @@
       self.gridOptions.onRegisterApi = function(gridApi) {
         self.gridApi = gridApi;
         gridApi.selection.on.rowSelectionChanged($scope, function() {
-          self.compromiso = self.gridApi.selection.getSelectedRows()[0];
+          //self.compromiso = self.gridApi.selection.getSelectedRows()[0];
         });
       };
 
@@ -122,6 +130,30 @@
           query: "TipoCompromisoTesoral.CategoriaCompromiso.Nombre:"+self.filtro_categoria.Nombre+",UnidadEjecutora:"+1 //CAMBIAR SEGUN USUARIO LOGUEADO
         })).then(function(response) {
           self.gridOptions.data =(response.data != null)?response.data:[];
+        });
+      };
+
+      self.actualizar_compromiso= function(){
+        swal({
+          title: $translate.instant('ACTUALIZAR_COMPROMISO')+'!',
+          text: $translate.instant('DESEA_ACTUALIZAR_COMPROMISO'),
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonClass: 'btn btn-success',
+          cancelButtonClass: 'btn btn-danger',
+          confirmButtonText: $translate.instant('BTN.CONFIRMAR'),
+          cancelButtonText: $translate.instant('BTN.CANCELAR'),
+          buttonsStyling: false
+        }).then(function() {
+          console.log(self.edit_compromiso);
+          financieraRequest.put('compromiso',self.edit_compromiso.Id,self.edit_compromiso).then(function(response){
+            console.log(response.data);
+            swal("",$translate.instant(response.data.Code), response.data.Type);
+            if (response.data.Type=='success') {
+              self.cargar();
+              self.edit_compromiso=null;
+            }
+          });
         });
       };
 
