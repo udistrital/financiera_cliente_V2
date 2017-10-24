@@ -316,11 +316,11 @@ legend:hover {
 /*Clases generales para pintar imputs que utilizan ng-model e indicar el error*/
 
 .ng-invalid.ng-dirty {
-    border-color: red;
+    border-color: #cc0909;
 }
 
 .ng-valid.ng-dirty {
-    border-color: green;
+    border-color: #2f8448;
 }
 
 
@@ -535,9 +535,9 @@ footer {
 
 /*end dropdown-menu */
 
-body {
+/*body {
     background-color: #FFFFFF;
-}
+}*/
 
 #wrapper {
     width: 100%;
@@ -860,6 +860,6 @@ table.dataTable thead .sorting:after {
 
 .panel-default>.panel-heading {
     color: white;
-    background-color: rgba(0, 62, 101, 1);
+    background-color: rgb(28, 43, 54);
     border-color: #ddd;
 }
