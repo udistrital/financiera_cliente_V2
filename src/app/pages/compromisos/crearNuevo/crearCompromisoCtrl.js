@@ -45,11 +45,14 @@
           }
 
           financieraRequest.post('categoria_compromiso',categoria).then(function(response){
-            swal("",$translate.instant(response.data.Code), response.data.Type);
+
             if (response.data.Type=='success') {
+              swal($translate.instant(response.data.Code),$translate.instant("CATEGORIA")+" "+response.data.Body, response.data.Type);
               self.nueva_categoria={};
               self.cargar_categoriasc=!self.cargar_categoriasc;
               self.cargar_categorias=!self.cargar_categorias;
+            } else {
+              swal("",$translate.instant(response.data.Code), response.data.Type);
             }
           });
         });
@@ -78,11 +81,14 @@
         }
 
           financieraRequest.post('tipo_compromiso_tesoral',tipo).then(function(response){
-            swal("",$translate.instant(response.data.Code), response.data.Type);
+
             if (response.data.Type=='success') {
+              swal($translate.instant(response.data.Code),$translate.instant("TIPO_COMPROMISO")+" "+response.data.Body, response.data.Type);
               self.nuevo_tipo={};
               self.cargar_categoriasc=!self.cargar_categoriasc;
               self.cargar_categorias=!self.cargar_categorias;
+            } else {
+              swal("",$translate.instant(response.data.Code), response.data.Type);
             }
           });
         });
@@ -112,10 +118,12 @@
             UnidadEjecutora:1  //CAMBIAR CON AUTENTICACION
           }
           financieraRequest.post('compromiso',compromiso).then(function(response){
-            console.log(response.data);
-            swal("",$translate.instant(response.data.Code), response.data.Type);
+            //console.log(response.data);
+            swal($translate.instant(response.data.Code),$translate.instant("COMPROMISO")+" "+$translate.instant("NO")+response.data.Body, response.data.Type);
             if (response.data.Type=='success') {
               self.nuevo_compromiso={};
+            } else {
+              swal("",$translate.instant(response.data.Code), response.data.Type);
             }
           });
         });

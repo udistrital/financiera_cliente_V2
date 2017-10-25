@@ -10,46 +10,6 @@
     </div>
   </div>
 
-  <div ng-show="gestionCompromisos.edit_compromiso!=null" class="col-md-12">
-    <div id="form_edit" class="panel panel-default">
-      <div class="panel-heading">
-        <button type="button" class="close" style="color=white" ng-click="gestionCompromisos.edit_compromiso=null">&times;</button>
-        <h4>
-          {{gestionCompromisos.edit_compromiso.TipoCompromisoTesoral.CategoriaCompromiso.Nombre}} | {{gestionCompromisos.edit_compromiso.TipoCompromisoTesoral.Nombre}} </h4>
-      </div>
-      <div class="panel-body">
-        <label>{{"ESTADO" | translate}}:</label> <label class="text-info">{{gestionCompromisos.edit_compromiso.EstadoCompromiso.Nombre}}</label>
-        <form  name="editar_c" ng-submit="editar_c.$valid && gestionCompromisos.actualizar_compromiso()" novalidate>
-          <fieldset class="form-group col-md-12">
-            <label>{{"OBJETO" | translate}}:</label>
-            <textarea class="form-control" ng-model="gestionCompromisos.edit_compromiso.Objeto" placeholder="{{'INGRESE_OBJETO_COMPROMISO' | translate}}" required>
-            </textarea>
-          </fieldset>
-
-          <fieldset class="form-group col-md-6">
-            <label>{{"FECHA_INICIO" | translate}}:</label>
-            <div class="input-group date" data-provide="datepicker">
-              <md-datepicker md-current-view="year" md-placeholder="{{'FECHA' | translate}}" ng-model="gestionCompromisos.edit_compromiso.FechaInicio" required></md-datepicker>
-            </div>
-          </fieldset>
-
-          <fieldset class="form-group col-md-6">
-            <label>{{"FECHA_FIN" | translate}}:</label>
-            <div class="input-group date" data-provide="datepicker">
-              <md-datepicker md-current-view="year" md-placeholder="{{'FECHA' | translate}}" ng-model="gestionCompromisos.edit_compromiso.FechaFin" required></md-datepicker>
-            </div>
-          </fieldset>
-
-        <fieldset class="form-group">
-          <button type="submit" class="btn btn-success btn-outline">{{"BTN.ACTUALIZAR" | translate}}</button>
-          <button class="btn btn-danger btn-outline" ng-click="gestionCompromisos.edit_compromiso=null">{{"BTN.CANCELAR" | translate}}</button>
-        </fieldset>
-      </form>
-      </div>
-    </div>
-
-  </div>
-
   <!-- Modal -->
   <div id="modal_ver" class="modal fade " role="dialog" style="padding-top:5%">
       <!-- Modal content-->
@@ -68,6 +28,64 @@
 
             <span class="label label-info">{{"FECHA_INICIO" | translate}} : {{gestionCompromisos.compromiso.FechaInicio | date: 'yyyy-MM-dd'}}</span>
             <span class="label label-info">{{"FECHA_FIN" | translate}} : {{gestionCompromisos.compromiso.FechaFin | date: 'yyyy-MM-dd'}}</span>
+          </div>
+          <!--div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div-->
+        </div>
+      </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div id="modal_editar" class="modal fade " role="dialog" style="padding-top:5%">
+    <style>
+      .md-datepicker-calendar-pane {
+        z-index: 1200
+      }
+    </style>
+      <!-- Modal content-->
+      <div class="col-md-offset-2 col-md-8">
+        <div class="modal-content " style="boder=solid 0px !important;">
+          <div class="modal-header bg-info">
+            <button type="button" class="close" data-dismiss="modal" ng-click="gestionCompromisos.edit_compromiso=null">&times;</button>
+            <h4>
+              {{gestionCompromisos.edit_compromiso.TipoCompromisoTesoral.CategoriaCompromiso.Nombre}} | {{gestionCompromisos.edit_compromiso.TipoCompromisoTesoral.Nombre}} </h4>
+          </div>
+          <div class="modal-body">
+            <label>{{"ESTADO" | translate}}:</label> <label class="text-info">{{gestionCompromisos.edit_compromiso.EstadoCompromiso.Nombre}}</label>
+              <form  name="editar_c" ng-submit="editar_c.$valid && gestionCompromisos.actualizar_compromiso()" novalidate>
+
+                <fieldset class="form-group col-md-12">
+                  <label>{{"OBJETO" | translate}}:</label>
+                  <textarea class="form-control" ng-model="gestionCompromisos.edit_compromiso.Objeto" placeholder="{{'INGRESE_OBJETO_COMPROMISO' | translate}}" rows="7" required>
+                  </textarea>
+                </fieldset>
+
+                <fieldset class="form-group col-md-12">
+                  <label>{{"VIGENCIA" | translate}}:</label>
+                  <input type="number" class="form-control" placeholder="AAAA" ng-model="gestionCompromisos.edit_compromiso.Vigencia" ng-maxlength="{{4}}" required>
+                </fieldset>
+
+                <fieldset class="form-group col-md-6">
+                  <label>{{"FECHA_INICIO" | translate}}:</label>
+                  <div class="input-group date" data-provide="datepicker">
+                    <md-datepicker md-current-view="year" md-placeholder="{{'FECHA' | translate}}" ng-model="gestionCompromisos.edit_compromiso.FechaInicio" required></md-datepicker>
+                  </div>
+                </fieldset>
+
+                <fieldset class="form-group col-md-6">
+                  <label>{{"FECHA_FIN" | translate}}:</label>
+                  <div class="input-group date" data-provide="datepicker">
+                    <md-datepicker md-current-view="year" md-placeholder="{{'FECHA' | translate}}" ng-model="gestionCompromisos.edit_compromiso.FechaFin" required></md-datepicker>
+                  </div>
+                </fieldset>
+
+              <fieldset class="form-group">
+                <button type="submit" class="btn btn-success btn-outline">{{"BTN.ACTUALIZAR" | translate}}</button>
+                <button class="btn btn-danger btn-outline" data-dismiss="modal" ng-click="gestionCompromisos.edit_compromiso=null">{{"BTN.CANCELAR" | translate}}</button>
+              </fieldset>
+            </form>
           </div>
           <!--div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

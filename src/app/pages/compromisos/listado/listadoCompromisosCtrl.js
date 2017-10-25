@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('Kronos.pages.compromisos.listadoCompromisos')
-    .controller('GestionCompromisosCtrl', function($scope, financieraRequest, $translate, $location, $anchorScroll) {
+    .controller('GestionCompromisosCtrl', function($scope, financieraRequest, $translate) {
       var self = this;
 
       $scope.botones = [
@@ -33,19 +33,20 @@
                   }).then(function() {
                     financieraRequest.delete('compromiso',row.entity.Id).then(function(response){
                       console.log(response.data);
-                      swal("",$translate.instant(response.data.Code), response.data.Type);
+                      swal($translate.instant(response.data.Code),$translate.instant("COMPROMISO")+" "+$translate.instant("NO")+response.data.Body, response.data.Type);
                       if (response.data.Type=='success') {
                         self.cargar();
                       }
                     });
                   });
                   break;
-              case "editar":
-                  self.edit_compromiso = angular.copy(row.entity);
-                  $location.hash('form_edit');
-                  $anchorScroll();
-                  break;
-              default:
+                case "editar":
+                    $('#modal_editar').modal('show');
+                    self.edit_compromiso = angular.copy(row.entity);
+                    //$location.hash('form_edit');
+                    //$anchorScroll();
+                    break;
+                default:
           }
       };
 
@@ -60,7 +61,14 @@
         enableVerticalScrollbar: 0,
         useExternalPagination: false,
         enableSelectAll: false,
-        columnDefs: [{
+        columnDefs: [
+          {
+            field: 'Id',
+            displayName: $translate.instant('NO'),
+            headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
+            width: '4%'
+          },
+          {
             field: 'Vigencia',
             displayName: $translate.instant('VIGENCIA'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
@@ -76,13 +84,13 @@
             field: 'FechaInicio',
             displayName: $translate.instant('FECHA_INICIO'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
-            width: '10%'
+            width: '9%'
           },
           {
             field: 'FechaFin',
             displayName: $translate.instant('FECHA_FIN'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
-            width: '10%'
+            width: '9%'
           },
           {
             field: 'EstadoCompromiso.Nombre',
@@ -94,19 +102,19 @@
             field: 'TipoCompromisoTesoral.Nombre',
             displayName: $translate.instant('TIPO'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
-            width: '8%'
+            width: '7%'
           },
           {
             visible:false,
             field: 'TipoCompromisoTesoral.CategoriaCompromiso.Nombre',
             displayName: $translate.instant('CATEGORIA'),
             headerCellClass: $scope.highlightFilteredHeader + 'text-center text-info',
-            width: '8%'
+            width: '6%'
           },
           {
             name: $translate.instant('OPCIONES'),
             enableFiltering: false,
-            width: '8%',
+            width: '7%',
             cellTemplate: '<center><btn-registro funcion="grid.appScope.loadrow(row,operacion)" grupobotones="grid.appScope.botones"></btn-registro></center>'
           }
         ]
@@ -145,13 +153,16 @@
           cancelButtonText: $translate.instant('BTN.CANCELAR'),
           buttonsStyling: false
         }).then(function() {
-          console.log(self.edit_compromiso);
+          //console.log(self.edit_compromiso);
           financieraRequest.put('compromiso',self.edit_compromiso.Id,self.edit_compromiso).then(function(response){
             console.log(response.data);
-            swal("",$translate.instant(response.data.Code), response.data.Type);
             if (response.data.Type=='success') {
+              swal($translate.instant(response.data.Code),$translate.instant("COMPROMISO")+" "+$translate.instant("NO")+response.data.Body, response.data.Type);
               self.cargar();
               self.edit_compromiso=null;
+              $("#modal_editar").modal('hide');
+            } else {
+              swal("",$translate.instant(response.data.Code), response.data.Type);
             }
           });
         });
